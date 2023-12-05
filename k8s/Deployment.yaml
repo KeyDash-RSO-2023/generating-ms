@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generator-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: generator-service
+  template:
+    metadata:
+      labels:
+        app: generator-service
+    spec:
+      containers:
+        - name: generator-service
+          image: kurtaga/generator-service:v10
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5

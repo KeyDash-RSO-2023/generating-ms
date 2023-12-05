@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: generator-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: generator-service # Label selector that matches your backend pods
+  ports:
+    - protocol: TCP
+      port: 8080 # Port the service will be accessible on
+      targetPort: 8080 # Target port on your backend pods
