@@ -26,6 +26,6 @@ RUN mvn --show-version --update-snapshots --batch-mode clean package
 FROM eclipse-temurin:17-jre
 RUN mkdir /app
 WORKDIR /app
-COPY --from=build ./app/api/target/users-api-1.0.0-SNAPSHOT.jar /app
+COPY --from=build ./app/target/generator-service-1.0-SNAPSHOT.jar /app
 EXPOSE 8080
-CMD ["java", "-jar", "generator-service-1.0.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "generator-service-1.0-SNAPSHOT.jar"]
