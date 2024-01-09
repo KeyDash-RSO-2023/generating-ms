@@ -36,5 +36,5 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/users:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/generator-ms:latest
 #          tags: ${{ secrets.DOCKER_USERNAME }}/users:${{ steps.current-time.outputs.formattedTime }}
