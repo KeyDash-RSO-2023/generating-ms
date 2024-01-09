@@ -34,7 +34,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          file: ./Dockerfile_with_maven_build
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/users:latest
 #          tags: ${{ secrets.DOCKER_USERNAME }}/users:${{ steps.current-time.outputs.formattedTime }}
