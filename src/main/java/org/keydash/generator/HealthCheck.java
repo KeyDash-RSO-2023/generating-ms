@@ -37,7 +37,7 @@ public class HealthCheck {
         // Return true if healthy, false if not
 
         try (Connection connection = dataSource.getConnection()) {
-            System.out.println("Healthcheck liveness passed");
+//            System.out.println("Healthcheck liveness passed");
             return true;
         } catch (SQLException e) {
             // Log the exception details
@@ -52,7 +52,7 @@ public class HealthCheck {
         boolean isReady = checkReadiness();
 
         if (isReady) {
-            System.out.println("Healthcheck readiness passed");
+//            System.out.println("Healthcheck readiness passed");
             return ResponseEntity.ok("Ready");
         } else {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Not ready");
