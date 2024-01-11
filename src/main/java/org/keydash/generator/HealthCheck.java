@@ -35,7 +35,9 @@ public class HealthCheck {
     private boolean checkLiveness() {
         // For example, check database connectivity
         // Return true if healthy, false if not
+
         try (Connection connection = dataSource.getConnection()) {
+            System.out.println("Healthcheck liveness passed");
             return true;
         } catch (SQLException e) {
             // Log the exception details
@@ -50,6 +52,7 @@ public class HealthCheck {
         boolean isReady = checkReadiness();
 
         if (isReady) {
+            System.out.println("Healthcheck readiness passed");
             return ResponseEntity.ok("Ready");
         } else {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Not ready");
