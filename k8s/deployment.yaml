@@ -18,6 +18,20 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          env:
+            - name: DB_CONNECTIONURL
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech:5432/generator
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mydbsecret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mydbsecret
+                  key: password
+
 #          livenessProbe:
 #            httpGet:
 #              path: /health/live
